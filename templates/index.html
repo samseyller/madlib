@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="card grid">
+    <div>
+      <span class="pill">Step 1</span>
+      <h2>Choose your madlib</h2>
+      <p>Select a story from the folder and start filling in the blanks.</p>
+    </div>
+    <form method="post" action="{{ url_for('start') }}" class="grid">
+      <div class="grid">
+        <label for="filename">Madlib file</label>
+        <select id="filename" name="filename" required>
+          {% if files %}
+            {% for file in files %}
+              <option value="{{ file }}">{{ file }}</option>
+            {% endfor %}
+          {% else %}
+            <option value="">No madlibs found</option>
+          {% endif %}
+        </select>
+      </div>
+      <div class="row">
+        <button type="submit" {% if not files %}disabled{% endif %}>Start</button>
+      </div>
+    </form>
+  </section>
+{% endblock %}

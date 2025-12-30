@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="card grid">
+    <div class="row" style="justify-content: space-between; align-items: center;">
+      <span class="pill">Step 2</span>
+      <span class="pill">All prompts</span>
+    </div>
+    <h2>Fill in the blanks</h2>
+    <p>Story: {{ filename }}</p>
+    <form method="post" class="grid">
+      {% for prompt in prompts %}
+        <div class="grid">
+          <label for="answer_{{ loop.index0 }}">Please provide a(n) {{ prompt }}</label>
+          <input
+            id="answer_{{ loop.index0 }}"
+            name="answer_{{ loop.index0 }}"
+            type="text"
+            autocomplete="off"
+            required
+          />
+        </div>
+      {% endfor %}
+      <div class="row">
+        <button type="submit">Reveal my madlib</button>
+      </div>
+    </form>
+  </section>
+{% endblock %}

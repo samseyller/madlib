@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Madlib Maker</title>
+    <style>
+      :root {
+        --ink: #1a1a1a;
+        --paper: #f8f3ea;
+        --accent: #2e7d6b;
+        --accent-2: #f4b400;
+        --panel: #ffffffcc;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        color: var(--ink);
+        background: radial-gradient(circle at 20% 10%, #fff1d6, transparent 55%),
+          radial-gradient(circle at 80% 0%, #d9f4ef, transparent 45%),
+          linear-gradient(135deg, #f5efe6, #f1e5d6);
+        min-height: 100vh;
+      }
+      header {
+        padding: 32px 20px 10px;
+        text-align: center;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 34px;
+        letter-spacing: 0.6px;
+      }
+      header p {
+        margin: 8px 0 0;
+        opacity: 0.75;
+      }
+      .wrap {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 0 20px 60px;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid #e1d7c6;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 18px 40px rgba(60, 40, 20, 0.08);
+        animation: rise 0.5s ease-out;
+      }
+      .pill {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: #f8e6c2;
+        font-size: 12px;
+        letter-spacing: 0.4px;
+      }
+      .grid {
+        display: grid;
+        gap: 16px;
+      }
+      .row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      label {
+        font-weight: 600;
+      }
+      select,
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid #d4c9b8;
+        background: #fffdf9;
+        font-size: 16px;
+      }
+      button {
+        cursor: pointer;
+        border: none;
+        border-radius: 12px;
+        padding: 12px 18px;
+        font-size: 16px;
+        background: var(--accent);
+        color: #fff;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+      button.secondary {
+        background: #4a4a4a;
+      }
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
+      .madlib {
+        white-space: pre-wrap;
+        line-height: 1.7;
+        font-size: 18px;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 28px;
+        }
+        .card {
+          padding: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Madlib Maker</h1>
+      <p>Pick a story, answer the prompts, and reveal the chaos.</p>
+    </header>
+    <main class="wrap">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

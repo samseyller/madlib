@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="card grid">
+    <div class="row" style="justify-content: space-between; align-items: center;">
+      <span class="pill">Step 3</span>
+      <span class="pill">Complete</span>
+    </div>
+    <h2>Your madlib is ready</h2>
+    <p>Story: {{ filename }}</p>
+    <div class="madlib">{{ completed }}</div>
+    <form method="post" action="{{ url_for('reset') }}" class="row">
+      <button type="submit">Start over</button>
+    </form>
+  </section>
+{% endblock %}
