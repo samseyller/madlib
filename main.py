@@ -1,10 +1,12 @@
+import argparse
 import re
 
 regex_match = r'\[(.+?)\]'
 
 def read_file(file_path):
     try:
-        with open(file_path, 'r') as file:
+        # Read as UTF-8 and replace undecodable bytes to avoid platform codec errors.
+        with open(file_path, 'r', encoding='utf-8', errors='replace') as file:
             content = file.read()
         return content
     except FileNotFoundError:
@@ -36,8 +38,11 @@ def replace_prompts_with_answers(input_string, answers):
     return input_string
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Fill in prompts in a madlib file.")
+    parser.add_argument("filename", help="Path to the input file to read.")
+    args = parser.parse_args()
 
-    input_string = read_file("1.txt")
+    input_string = read_file(args.filename)
 
     prompts = extract_prompts(input_string)
     answers = answer_prompts(prompts)
